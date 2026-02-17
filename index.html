@@ -1,10 +1,16 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXO DIGITAL | HIGH-END SYSTEMS</title>
     
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NEXO DIGITAL | HIGH-END SYSTEMS">
+    <meta property="og:description" content="SISTEMAS DIGITALES A MEDIDA Y PUBLICIDAD DE ALTO IMPACTO.">
+    <meta property="og:image" content="https://i.postimg.cc/pTDrkS7z/63825.png">
+    <meta property="og:url" content="https://nexodigitalook-tech.github.io/Nexo-Digital/">
+
     <link rel="icon" href="https://i.postimg.cc/pTDrkS7z/63825.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&display=swap" rel="stylesheet">
@@ -19,7 +25,7 @@
             --text: #ffffff;
         }
 
-        /* RESET GENERAL - TODO EN MAYÚSCULAS POR PREFERENCIA DEL USUARIO */
+        /* RESET GENERAL - TODO EN MAYÚSCULAS */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none !important; text-transform: uppercase; }
         body { background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
 
@@ -130,9 +136,9 @@
     <section id="home" class="section active">
         <div id="live-date">...</div>
         <h1 class="hero-title"><span id="typewriter"></span><span class="cursor"></span></h1>
-        <p class="hero-p">Ayudo a comercios a vender mas,creando sistemas digitales a medida con codigo puro y estrategias de  publicidas que traen clientes reales.</p>
+        <p class="hero-p">AYUDO A COMERCIOS A VENDER MÁS, CREANDO SISTEMAS DIGITALES A MEDIDA CON CÓDIGO PURO Y ESTRATEGIAS DE PUBLICIDAD QUE TRAEN CLIENTES REALES.</p>
         <div class="btn-group">
-            <button class="btn btn-primary" onclick="showSection('services')">MODERNIZA TU NEGOCIO</button>
+            <button class="btn btn-primary" onclick="showSection('services')">MODERNIZÁ TU NEGOCIO</button>
             <button class="btn btn-secondary" onclick="showSection('portfolio')">CASO DE ÉXITO</button>
         </div>
     </section>
@@ -160,7 +166,7 @@
 
     <footer>
         <div class="system-status">
-            <span class="status-dot"></span> SISTEMA v2.0 ACTIVO
+            <span class="status-dot"></span> SISTEMA v2.1 ACTIVO
         </div>
         
         <div class="footer-socials">
@@ -178,7 +184,6 @@
     </a>
 
     <script>
-        // RELOJ FORZADO A 24 HORAS CON FORMATO 14:26
         function updateTime() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
