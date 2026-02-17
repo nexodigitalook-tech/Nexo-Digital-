@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXO DIGITAL | HIGH-END SYSTEMS</title>
+    
+    <link rel="icon" href="https://i.postimg.cc/pTDrkS7z/63825.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #05070a;
+            --accent: #0062ff;
+            --accent-glow: rgba(0, 98, 255, 0.4);
+            --glass: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text: #ffffff;
+        }
+
+        /* RESET GENERAL - TODO EN MAYÚSCULAS POR PREFERENCIA DEL USUARIO */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; text-decoration: none !important; text-transform: uppercase; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* LOADER PREMIUM */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #05070a;
+            display: flex; justify-content: center; align-items: center; z-index: 9999;
+            transition: opacity 1s ease-in-out, visibility 1s;
+        }
+        .loader-content { font-size: 20px; font-weight: 800; letter-spacing: 5px; animation: pulseText 1.5s infinite; }
+        @keyframes pulseText { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        /* FONDO DINÁMICO */
+        .bg-glow {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 98, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 98, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% -10%, #1e3a8a 0%, #05070a 60%);
+            z-index: -1; filter: blur(80px); animation: moveBg 20s infinite alternate;
+        }
+        @keyframes moveBg { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 8%; backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border);
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .logo { font-size: 22px; font-weight: 800; letter-spacing: 2px; }
+        .logo i { color: var(--accent); font-style: normal; text-shadow: 0 0 15px var(--accent); }
+
+        .nav-info { text-align: right; }
+        #live-clock { font-size: 14px; font-weight: 800; letter-spacing: 1px; color: var(--accent); }
+        .nav-loc { font-size: 9px; letter-spacing: 2px; opacity: 0.5; }
+
+        .section { display: none; flex: 1; padding: 60px 8%; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .section.active { display: flex; animation: sectionFade 0.8s ease forwards; }
+        @keyframes sectionFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .hero-title { 
+            font-size: clamp(2.2rem, 7vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px;
+            background: linear-gradient(to bottom, #fff 60%, #444); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .hero-p { max-width: 700px; font-size: 1.1rem; color: #a1a1aa; margin-bottom: 35px; line-height: 1.7; }
+        #live-date { font-size: 11px; letter-spacing: 4px; color: var(--accent); font-weight: 800; margin-bottom: 20px; }
+
+        .btn {
+            padding: 18px 45px; border-radius: 100px; font-weight: 800;
+            cursor: pointer; transition: 0.4s; border: none; font-size: 13px; letter-spacing: 1px;
+            position: relative; overflow: hidden; display: inline-block;
+        }
+        .btn-primary { background: var(--accent); color: white; box-shadow: 0 10px 40px var(--accent-glow); }
+        .btn-secondary { background: var(--glass); color: white; border: 1px solid var(--glass-border); }
+
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; margin-top: 40px; }
+        .card {
+            background: var(--glass); border: 1px solid var(--glass-border); padding: 40px; border-radius: 30px;
+            text-align: left; transition: 0.5s;
+        }
+        .card:hover { border-color: var(--accent); background: rgba(0, 98, 255, 0.03); transform: translateY(-10px); }
+        .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; display: block; }
+        .card h3 { font-size: 1.2rem; margin-bottom: 15px; color: #fff; }
+        .card p { font-size: 0.9rem; color: #a1a1aa; }
+
+        footer {
+            padding: 30px 8%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border); display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 20px; margin-top: auto;
+        }
+
+        .system-status { font-size: 10px; color: #a1a1aa; letter-spacing: 1px; }
+        .status-dot { height: 8px; width: 8px; background: #25d366; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blinkStatus 1.5s infinite; }
+        @keyframes blinkStatus { 0%, 100% { opacity: 1; box-shadow: 0 0 10px #25d366; } 50% { opacity: 0.4; } }
+
+        .footer-socials { display: flex; gap: 25px; }
+        .footer-socials a { color: white; opacity: 0.6; transition: 0.3s; font-size: 1.2rem; }
+        .footer-socials a:hover { opacity: 1; color: var(--accent); transform: translateY(-3px); }
+
+        .wa-float {
+            position: fixed; bottom: 100px; right: 40px; background: #25d366; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; z-index: 1000; animation: pulseWa 2s infinite;
+        }
+        @keyframes pulseWa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .wa-float i { font-size: 30px; color: white; }
+
+        .cursor { display: inline-block; width: 10px; height: 1em; background: var(--accent); margin-left: 5px; animation: blink 0.8s infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="loader-content">NEXO DIGITAL</div>
+    </div>
+
+    <div class="bg-glow"></div>
+
+    <nav>
+        <div class="logo">NEXO DIGITAL<i>.</i></div>
+        <div class="nav-info">
+            <div id="live-clock">00:00:00</div>
+            <div class="nav-loc">BELL VILLE, AR</div>
+        </div>
+    </nav>
+
+    <section id="home" class="section active">
+        <div id="live-date">...</div>
+        <h1 class="hero-title"><span id="typewriter"></span><span class="cursor"></span></h1>
+        <p class="hero-p">Ayudo a comercios a vender mas,creando sistemas digitales a medida con codigo puro y estrategias de  publicidas que traen clientes reales.</p>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="showSection('services')">MODERNIZA TU NEGOCIO</button>
+            <button class="btn btn-secondary" onclick="showSection('portfolio')">CASO DE ÉXITO</button>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2 style="font-size: 2.5rem; margin-bottom: 40px;">SERVICIOS PROFESIONALES</h2>
+        <div class="services-grid">
+            <div class="card"><i class="fas fa-code"></i><h3>DESARROLLO WEB</h3><p>CÓDIGO PURO PARA MÁXIMA VELOCIDAD. SIN PLANTILLAS GENÉRICAS.</p></div>
+            <div class="card"><i class="fas fa-microchip"></i><h3>MANTENIMIENTO</h3><p>MONITOREO CONSTANTE PARA ESTABILIDAD TOTAL DEL SISTEMA.</p></div>
+            <div class="card"><i class="fas fa-list-check"></i><h3>CATÁLOGOS</h3><p>GESTIÓN MASIVA DE STOCK CON PEDIDOS AUTOMÁTICOS VÍA WHATSAPP.</p></div>
+            <div class="card"><i class="fas fa-bullhorn"></i><h3>PUBLICIDAD</h3><p>CAMPAÑAS DE META ADS ENFOCADAS EN RESULTADOS COMERCIALES.</p></div>
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 50px;" onclick="showSection('home')">VOLVER AL INICIO</button>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div style="background: var(--glass); border: 1px solid var(--accent); padding: 50px; border-radius: 40px; max-width: 800px;">
+            <small style="color: var(--accent); font-weight: 800; letter-spacing: 4px;">CASO DE ÉXITO</small>
+            <h2 style="font-size: 2.5rem; margin: 20px 0;">DISTRIBUIDORA GARCÍA Y CÍA</h2>
+            <p class="hero-p">SISTEMA DE INVENTARIO MASIVO (+700 PRODUCTOS) CON PEDIDOS AUTOMATIZADOS.</p>
+            <a href="https://garciayciadistribuciones.github.io/Garciaycia/" target="_blank" class="btn btn-primary">VER PROYECTO</a>
+        </div>
+        <button class="btn btn-secondary" style="margin-top: 40px;" onclick="showSection('home')">CERRAR</button>
+    </section>
+
+    <footer>
+        <div class="system-status">
+            <span class="status-dot"></span> SISTEMA v2.0 ACTIVO
+        </div>
+        
+        <div class="footer-socials">
+            <a href="mailto:Nexodigitalook@gmail.com" title="Enviar Email"><i class="far fa-envelope"></i></a>
+            <a href="https://www.instagram.com/nexodigital_ok" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/5493537566534" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <div style="font-size: 10px; opacity: 0.4; letter-spacing: 2px;">© 2026 BELL VILLE, CÓRDOBA</div>
+    </footer>
+
+    <a href="https://wa.me/5493537566534" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // RELOJ FORZADO A 24 HORAS CON FORMATO 14:26
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('live-clock').textContent = `${hours}:${minutes}:${seconds}`;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('live-date').textContent = now.toLocaleDateString('es-AR', options).toUpperCase();
+        }
+        
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                document.getElementById('loader').style.visibility = 'hidden';
+            }, 1500);
+        });
+
+        const text = "TRANSFORMA TU NEGOCIO";
+        let index = 0;
+        function type() {
+            if (index < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, 100);
+            }
+        }
+        window.onload = type;
+    </script>
+</body>
+</html>
